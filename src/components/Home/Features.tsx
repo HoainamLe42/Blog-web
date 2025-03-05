@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const Features = () => {
     const { blogPosts } = useBlog();
-    const [currentIndex, setCurrentIndex] = useState(0);
+    // const [currentIndex, setCurrentIndex] = useState(0);
     const [currentIndexLarge, setCurrentIndexLarge] = useState(0);
 
     let post = blogPosts[14];
@@ -77,11 +77,11 @@ const Features = () => {
                                 <div className="hidden lg:block col-span-12 lg:col-start-7 col-end-13 w-full overflow-hidden bg-white relative border rounded-lg shadow-lg">
                                     <ul
                                         className="flex gap-5 p-3 transition-transform duration-500 ease-in-out"
-                                        style={{
-                                            transform: `translateX(-${
-                                                currentIndex * 100
-                                            }%)`,
-                                        }}
+                                        // style={{
+                                        //     transform: `translateX(-${
+                                        //         currentIndex * 100
+                                        //     }%)`,
+                                        // }}
                                     >
                                         {post.comments?.length ? (
                                             post.comments?.map(
