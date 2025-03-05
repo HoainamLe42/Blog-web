@@ -2,7 +2,6 @@ import {
     LayoutDashboard,
     MessageSquareText,
     PencilLine,
-    Settings,
     UsersRound,
 } from 'lucide-react';
 import config from '../config';

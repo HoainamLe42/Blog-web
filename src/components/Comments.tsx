@@ -40,9 +40,9 @@ const Comments = ({ isShowComments, postId, authorId }: CommentsProps) => {
     }, [postId]);
 
     // Remove Comments
-    const removeComment = async (commentId: number) => {
+    const removeComment = async (commentId: string) => {
         setComments((prev) =>
-            prev.filter((comment) => comment.id !== commentId),
+            prev.filter((comment) => String(comment.id) !== commentId),
         );
 
         try {
@@ -71,8 +71,8 @@ const Comments = ({ isShowComments, postId, authorId }: CommentsProps) => {
         console.log(newComment);
 
         const newCommentData: Comment = {
-            id: Date.now(),
-            userId: user?.id ?? 0,
+            id: String(Date.now()),
+            userId: user?.id ?? '',
             username: user?.username || 'Người dùng ẩn danh',
             avatar: user?.avatar,
             comment: newComment,
