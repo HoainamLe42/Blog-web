@@ -91,9 +91,9 @@ const SignIn = () => {
     return (
         <div className="relative h-screen py-[140px] bg-gray-300 dark:bg-black">
             <Container>
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-1 md:grid-cols-2">
                     {/* Bg */}
-                    <div className="flex items-center justify-center">
+                    <div className="hidden md:flex items-center justify-center">
                         <h3 className="text-h3 ">Soon</h3>
                     </div>
                     {/* Content */}

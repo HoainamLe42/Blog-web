@@ -54,11 +54,13 @@ const BlogCard = ({
                 <img
                     src={backgroundImage}
                     alt=""
+                    loading="lazy"
                     className="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:opacity-0"
                 />
                 <img
                     src={imagePost || backgroundImage}
                     alt=""
+                    loading="lazy"
                     className="w-full h-full absolute inset-0 object-cover transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100"
                 />
             </div>
