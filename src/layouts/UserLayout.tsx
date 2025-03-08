@@ -1,13 +1,18 @@
 import { Menu } from 'lucide-react';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { menuUserData } from '../data/menuUserData';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import config from '../config';
 import Logo from '../assets/images/logo.webp';
 
 const UserLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(true);
+    const location = useLocation();
+
+    useEffect(() => {
+        setIsOpenSidebar(false);
+    }, [location]);
 
     return (
         <div className="h-screen">

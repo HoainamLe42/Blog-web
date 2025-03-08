@@ -173,6 +173,7 @@ const SinglePost = () => {
                                         <img
                                             src={section.src}
                                             alt={section.alt}
+                                            loading="lazy"
                                             className="h-full w-full object-cover"
                                         />
                                     </div>

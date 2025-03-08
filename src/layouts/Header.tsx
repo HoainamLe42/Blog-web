@@ -10,11 +10,13 @@ import { defaultAvatar, useAuth } from '../context/AuthContext';
 import DropdownAvatar from '../components/DropdownAvatar';
 import Button from '../components/Button';
 import { Menu } from 'lucide-react';
+import MobileMenu from '../components/MobileMenu';
 
 const Header = () => {
     const [isActiveScroll, setIsActiveScroll] = useState<boolean>(false);
     const navigate = useNavigate();
     const { user } = useAuth();
+    const [isOpenMenu, setIsOpenMenu] = useState<boolean>(true);
 
     // const user = localStorage.getItem('user');
 
@@ -33,7 +35,7 @@ const Header = () => {
                 isActiveScroll
                     ? 'bg-yellowLight dark:bg-black dark:opacity-80 shadow-lg py-2 md:p-5'
                     : 'p-6'
-            } transition-all duration-200`}
+            } transition-all duration-[400ms]`}
         >
             <Container>
                 <div className="flex justify-between items-center text-black dark:text-white">
@@ -45,7 +47,7 @@ const Header = () => {
                         <span className="font-thin italic">TravelBlog</span>
                     </div>
 
-                    {/* nav */}
+                    {/* nav PC */}
                     <nav>
                         <ul className="hidden md:flex gap-8">
                             {navData.map((nav) => (
@@ -64,12 +66,13 @@ const Header = () => {
                             ))}
                         </ul>
                     </nav>
+
                     {/* Login */}
                     <div className="flex items-center gap-5">
                         <ThemeToggle />
                         {user ? (
                             <div className="relative group">
-                                <div className="relative h-10 w-10 rounded-full bg-sky-300 flex items-center justify-center text-5xl font-semibold">
+                                <div className="relative h-10 w-10 rounded-full bg-sky-300 hidden md:flex items-center justify-center text-5xl font-semibold">
                                     <img
                                         src={
                                             user?.avatar
@@ -92,11 +95,18 @@ const Header = () => {
                                 >
                                     Login
                                 </button>
-                                <Button className="md:hidden bg-white bg-opacity-10 dark:hover:bg-black hover:bg-white hover:bg-opacity-40 dark:hover:bg-opacity-30">
-                                    <Menu size="12" />
-                                </Button>
                             </>
                         )}
+                        <Button className="md:hidden bg-white bg-opacity-10 dark:hover:bg-black hover:bg-white hover:bg-opacity-40 dark:hover:bg-opacity-30">
+                            <Menu
+                                size="12"
+                                onClick={() => setIsOpenMenu(!isOpenMenu)}
+                            />
+                            <MobileMenu
+                                isOpen={isOpenMenu}
+                                onClose={setIsOpenMenu}
+                            />
+                        </Button>
                     </div>
                 </div>
             </Container>
