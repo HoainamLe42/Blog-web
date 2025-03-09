@@ -5,6 +5,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import config from '../config';
 import Logo from '../assets/images/logo.webp';
+import { Helmet } from 'react-helmet-async';
 
 const UserLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(true);
@@ -16,6 +17,13 @@ const UserLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     return (
         <div className="h-screen">
+            <Helmet>
+                <title>Profile | Website Blog</title>
+                <meta
+                    name="description"
+                    content="Trang thông tin người dùng của website Blog"
+                />
+            </Helmet>
             <div className="flex flex-col sm:flex-row">
                 {/* SideBar  */}
                 <aside

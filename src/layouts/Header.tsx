@@ -33,19 +33,19 @@ const Header = () => {
         <header
             className={`fixed w-full z-[100] ${
                 isActiveScroll
-                    ? 'bg-yellowLight dark:bg-black dark:opacity-80 shadow-lg py-2 md:p-5'
-                    : 'p-6'
+                    ? 'bg-gray-400 dark:bg-black dark:opacity-80 shadow-lg py-2 md:p-5'
+                    : 'py-6'
             } transition-all duration-[400ms]`}
         >
             <Container>
                 <div className="flex justify-between items-center text-black dark:text-white">
                     {/* Logo */}
-                    <div className="font-bold flex items-center gap-2 text-black dark:text-white">
-                        <Link to={config.routes.HOME.PATH}>
+                    <Link to={config.routes.HOME.PATH}>
+                        <div className="font-bold flex items-center gap-2 text-black dark:text-white cursor-pointer">
                             <img src={Logo} alt="" className="h-9 rounded-lg" />
-                        </Link>
-                        <span className="font-thin italic">TravelBlog</span>
-                    </div>
+                            <span className="font-thin italic">TravelBlog</span>
+                        </div>
+                    </Link>
 
                     {/* nav PC */}
                     <nav>
@@ -57,7 +57,7 @@ const Header = () => {
                                         className={({ isActive }) =>
                                             isActive
                                                 ? 'relative text-yellow-300 py-2 after:h-[2px] after:w-full after:bg-yellow-300 after:absolute after:left-0 after:bottom-0'
-                                                : 'relative py-2 hover:text-yellow-300 dark:hover:text-primary transition-all duration-200 cursor-pointer hover-line'
+                                                : 'relative py-2 hover:text-yellow-300 transition-all duration-200 cursor-pointer hover-line'
                                         }
                                     >
                                         {nav.name}
@@ -97,9 +97,11 @@ const Header = () => {
                                 </button>
                             </>
                         )}
-                        <Button className="md:hidden bg-white bg-opacity-10 dark:hover:bg-black hover:bg-white hover:bg-opacity-40 dark:hover:bg-opacity-30">
+
+                        {/* Icon Menu */}
+                        <Button className="md:hidden p-3 text-black dark:text-white bg-white bg-opacity-10 dark:hover:bg-black hover:bg-white hover:bg-opacity-40 dark:hover:bg-opacity-30">
                             <Menu
-                                size="12"
+                                size="22"
                                 onClick={() => setIsOpenMenu(!isOpenMenu)}
                             />
                             <MobileMenu

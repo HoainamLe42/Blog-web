@@ -115,7 +115,24 @@
       "tags": [
         "Du lịch"
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "1741519069953",
+          "userId": "1739278443174",
+          "username": "sontungmtp",
+          "avatar": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Son_Tung_M-TP_1_%282017%29.png",
+          "comment": "đẹp nha",
+          "createdAt": "2025-03-09T11:17:49.953Z"
+        },
+        {
+          "id": "1741519085613",
+          "userId": "1739278443174",
+          "username": "sontungmtp",
+          "avatar": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Son_Tung_M-TP_1_%282017%29.png",
+          "comment": "bạn có tour đi không",
+          "createdAt": "2025-03-09T11:18:05.613Z"
+        }
+      ],
       "status": "approved"
     },
     {

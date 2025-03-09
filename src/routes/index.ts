@@ -1,6 +1,8 @@
 import React from 'react';
 import config from '../config';
 import Setting from '../pages/user/Setting';
+import UserLayout from '../layouts/UserLayout';
+import AdminLayout from '../layouts/AdminLayout';
 
 const HomePage = React.lazy(() => import('../pages/Home'));
 const ContactPage = React.lazy(() => import('../pages/Contact'));
@@ -45,58 +47,58 @@ export const publicRoutes: Route[] = [
     {
         path: config.routes.USER.PROFILE,
         component: Profile,
-        layout: null,
+        layout: UserLayout,
     },
     {
         path: config.routes.USER.CREATE_POST,
         component: CreateBlogPost,
-        layout: null,
+        layout: UserLayout,
     },
     {
         path: config.routes.USER.MY_POSTS,
         component: MyPosts,
-        layout: null,
+        layout: UserLayout,
     },
     {
         path: config.routes.USER.PENDING_POSTS,
         component: PendingPosts,
-        layout: null,
+        layout: UserLayout,
     },
     {
         path: config.routes.USER.EDIT_POST,
         component: EditPost,
-        layout: null,
+        layout: UserLayout,
     },
     {
         path: config.routes.USER.SETTING,
         component: Setting,
-        layout: null,
+        layout: UserLayout,
     },
 
     // ADMIN
     {
         path: config.routes.ADMIN.DASHBOARD,
         component: Dashboard,
-        layout: null,
+        layout: AdminLayout,
     },
     {
         path: config.routes.ADMIN.MANAGE_POSTS,
         component: ManagePosts,
-        layout: null,
+        layout: AdminLayout,
     },
     {
         path: config.routes.ADMIN.MANAGE_USERS,
         component: ManageUsers,
-        layout: null,
+        layout: AdminLayout,
     },
     {
         path: config.routes.ADMIN.MANAGE_COMMENTS,
         component: ManageComments,
-        layout: null,
+        layout: AdminLayout,
     },
     {
         path: config.routes.ADMIN.ADMIN_POST_DETAIL,
         component: AdminPostDetail,
-        layout: null,
+        layout: AdminLayout,
     },
 ];

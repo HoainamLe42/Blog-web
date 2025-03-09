@@ -1,6 +1,5 @@
 import { useAuth } from '../../context/AuthContext';
 import { useBlog } from '../../context/BlogContext';
-import UserLayout from '../../layouts/UserLayout';
 import BlogCard from '../../components/BlogCard';
 
 const PendingPosts = () => {
@@ -11,7 +10,7 @@ const PendingPosts = () => {
         (post) => post.userId === user?.id && post.status === 'pending',
     );
     return (
-        <UserLayout>
+        <div>
             <section className="py-3 px-4 overflow-y-auto h-screen">
                 <h2 className="text-h2 text-center my-12">Pending Posts</h2>
 
@@ -26,7 +25,7 @@ const PendingPosts = () => {
                     <p>Không có bài viết nào</p>
                 )}
             </section>
-        </UserLayout>
+        </div>
     );
 };
 

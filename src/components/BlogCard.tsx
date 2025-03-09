@@ -4,6 +4,7 @@ import { formatDate } from '../utils/CurrencyFormatter';
 import { defaultAvatar } from '../context/AuthContext';
 import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../context/BlogContext';
+import AOS from 'aos';
 
 const BlogCard = ({
     userId,
@@ -45,15 +46,23 @@ const BlogCard = ({
         fetchPost();
     }, [userId]);
 
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+
+        return () => AOS.refresh();
+    }, []);
+
     return (
         <div
+            data-aos="zoom-in"
             onClick={() => navigate(`/single-blog-post/${id}`)}
             className="border border-gray-200 dark:border-white shadow-lg p-5 md:p-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-200 flex flex-col h-full group"
         >
             <div className="w-full h-[200px] sm:h-[280px] md:h-[240px] bg-gray-200 rounded-md overflow-hidden text-secondary-text text-3xl flex items-center justify-center relative">
                 <img
                     src={backgroundImage}
-                    alt=""
+                    alt="backgroundMain"
                     loading="lazy"
                     className="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:opacity-0"
                 />
@@ -83,7 +92,7 @@ const BlogCard = ({
                         <div className="h-9 w-9 rounded-full bg-gray-200 flex-shrink-0">
                             <img
                                 src={userAvatar ? userAvatar : defaultAvatar}
-                                alt=""
+                                alt="Avatar user"
                                 className="h-full w-full rounded-full object-cover"
                             />
                         </div>

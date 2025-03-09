@@ -151,7 +151,7 @@ const Comments = ({ isShowComments, postId, authorId }: CommentsProps) => {
                                             src={
                                                 comment.avatar ?? defaultAvatar
                                             }
-                                            alt=""
+                                            alt="Avatar"
                                         />
                                     </span>
                                     <p>

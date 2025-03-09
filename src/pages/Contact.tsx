@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../components/Button';
 import Container from '../components/Container';
 import { contactData } from '../data/contactData';
 import { API_BASE_URL } from '../context/BlogContext';
 import { toast } from 'react-toastify/unstyled';
+import AOS from 'aos';
+import { Helmet } from 'react-helmet-async';
 
 type ContactType = {
     name: string;
@@ -20,6 +22,13 @@ const Contact = () => {
         message: '',
     });
     const [errors, setErrors] = useState<Partial<ContactType>>({});
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+
+        return () => AOS.refresh();
+    }, []);
 
     const handleChangeInput = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -76,15 +85,25 @@ const Contact = () => {
     };
 
     return (
-        <div className="relative md:h-screen py-[100px] md:py-[140px] dark:bg-black">
+        <div className="relative md:h-screen py-[100px] md:py-[140px] pb-[60px] dark:bg-black">
+            <Helmet>
+                <title>Trang liên lạc | Website Blog</title>
+                <meta
+                    name="description"
+                    content="Trang liên lạc của website Blog"
+                />
+            </Helmet>
             <Container>
                 <h2 className="md:text-h2 text-4xl dark:text-white text-center">
                     Thông Tin Liên Hệ
                 </h2>
-                <div className="md:grid md:grid-cols-5 flex flex-col mt-10 min-h-[300px]">
+                <div className="md:grid md:grid-cols-5 flex flex-col mt-5 md:mt-7 lg:mt-10 min-h-[300px]">
                     {/* Col 1 */}
-                    <div className="col-span-2 py-3 flex flex-col md:gap-10 gap-5">
-                        <ul className="flex gap-3">
+                    <div
+                        data-aos="fade-right"
+                        className="col-span-2 py-3 flex flex-col md:gap-10 gap-5"
+                    >
+                        <ul data-aos="zoom-in" className="flex gap-3">
                             {contactData.socialLink.map((social, index) => (
                                 <li
                                     key={index}
@@ -99,7 +118,7 @@ const Contact = () => {
                         <div className="flex items-center gap-5">
                             <contactData.phone.icon className="w-6 text-primary" />
                             <div>
-                                <p className="text-xl dark:text-white font-semibold">
+                                <p className="text-lg md:text-xl dark:text-white font-semibold">
                                     {contactData.phone.title}
                                 </p>
                                 <p className="text-secondary-text">
@@ -120,7 +139,10 @@ const Contact = () => {
                         </div>
                     </div>
                     {/* Col 2 */}
-                    <div className="col-start-3 col-span-3 py-3">
+                    <div
+                        data-aos="fade-left"
+                        className="col-start-3 col-span-3 py-3"
+                    >
                         <form
                             onSubmit={handleSubmit}
                             className="flex flex-col gap-3"

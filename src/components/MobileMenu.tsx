@@ -80,7 +80,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                                 ? user.avatar
                                                 : defaultAvatar
                                         }
-                                        alt=""
+                                        alt="Avatar"
                                         className="h-full w-full rounded-full object-cover"
                                     />
                                 </div>
@@ -143,13 +143,15 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                         </div>
                     )}
 
-                    <div
-                        onClick={logout}
-                        className="absolute bottom-0 left-0 flex gap-4 items-center px-4 py-3 mb-5 text-black  cursor-pointer"
-                    >
-                        <LogOut />
-                        Đăng xuất
-                    </div>
+                    {user && (
+                        <div
+                            onClick={logout}
+                            className="absolute bottom-0 left-0 flex gap-4 items-center px-4 py-3 mb-5 text-black  cursor-pointer"
+                        >
+                            <LogOut />
+                            Đăng xuất
+                        </div>
+                    )}
                 </nav>
             )}
         </div>

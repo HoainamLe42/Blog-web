@@ -5,7 +5,6 @@ import { toast } from 'react-toastify/unstyled';
 import { Edit } from 'lucide-react';
 import Button from '../../components/Button';
 import { defaultAvatar, useAuth } from '../../context/AuthContext';
-import UserLayout from '../../layouts/UserLayout';
 
 import { API_BASE_URL } from '../../context/BlogContext';
 
@@ -90,7 +89,7 @@ const Profile = () => {
     };
 
     return (
-        <UserLayout>
+        <div>
             <div className="py-3 px-4">
                 <div className="flex flex-col items-center mt-16">
                     {/* Avatar */}
@@ -171,7 +170,7 @@ const Profile = () => {
                     </form>
                 </div>
             </div>
-        </UserLayout>
+        </div>
     );
 };
 
