@@ -5,6 +5,8 @@ import Button from '../components/Button';
 import Container from '../components/Container';
 import { API_BASE_URL } from '../context/BlogContext';
 import { BlogPost } from '../types/BlogTypes';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { Helmet } from 'react-helmet-async';
 
 // Giá trị không thay đổi nên đặt bên ngoài
 const LIMIT = 6;
@@ -47,43 +49,58 @@ const Blogs = () => {
     };
 
     return (
-        <div className="relative pt-[100px] pb-[60px] md:py-[120px] dark:bg-black">
-            <div>
-                <Container>
+        <div>
+            {loading ? (
+                <LoadingSpinner />
+            ) : (
+                <div className="relative pt-[100px] pb-[60px] md:py-[120px] dark:bg-black">
+                    <Helmet>
+                        <title>Trang Blogs | Website Blog</title>
+                        <meta
+                            name="description"
+                            content="Trang danh sách blog của website Blog"
+                        />
+                    </Helmet>
                     <div>
-                        {/* Slideshow */}
-                        <BlogSlider />
+                        <Container>
+                            <div>
+                                {/* Slideshow */}
+                                <BlogSlider />
 
-                        {/* Blog listing */}
-                        <section className="mt-5 sm:mt-7 md:mt-10">
-                            <h3 className="text-xl sm:text-2xl md:text-h3 font-semibold ml-4 dark:text-white">
-                                Bài viết gần đây
-                            </h3>
+                                {/* Blog listing */}
+                                <section className="mt-5 sm:mt-7 md:mt-10">
+                                    <h3 className="text-xl sm:text-2xl md:text-h3 font-semibold ml-4 dark:text-white">
+                                        Bài viết gần đây
+                                    </h3>
 
-                            {/* Pagination (Phân trang) */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 md:mt-8">
-                                {posts.map((post) => (
-                                    <BlogCard key={post.id} {...post} />
-                                ))}
+                                    {/* Pagination (Phân trang) */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 md:mt-8">
+                                        {posts.map((post) => (
+                                            <BlogCard key={post.id} {...post} />
+                                        ))}
+                                    </div>
+                                </section>
+
+                                {/* Button Load More */}
+                                {hasMore && (
+                                    <div className="text-center mt-8">
+                                        <Button
+                                            onClick={handleLoadMore}
+                                            variant="borderOnly"
+                                            className="px-6"
+                                            disabled={loading}
+                                        >
+                                            {loading
+                                                ? '...đang tải'
+                                                : 'Xem thêm'}
+                                        </Button>
+                                    </div>
+                                )}
                             </div>
-                        </section>
-
-                        {/* Button Load More */}
-                        {hasMore && (
-                            <div className="text-center mt-8">
-                                <Button
-                                    onClick={handleLoadMore}
-                                    variant="borderOnly"
-                                    className="px-6"
-                                    disabled={loading}
-                                >
-                                    {loading ? '...đang tải' : 'Xem thêm'}
-                                </Button>
-                            </div>
-                        )}
+                        </Container>
                     </div>
-                </Container>
-            </div>
+                </div>
+            )}
         </div>
     );
 };

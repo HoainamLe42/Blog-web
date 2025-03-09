@@ -3,6 +3,7 @@ import { ReactNode, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { sidebarAdminData } from '../data/sidebarAdminData';
 import { useAuth } from '../context/AuthContext';
+import { Helmet } from 'react-helmet-async';
 
 const AdminLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(true);
@@ -11,6 +12,13 @@ const AdminLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     return (
         <div className="h-screen">
+            <Helmet>
+                <title>Admin | Website Blog</title>
+                <meta
+                    name="description"
+                    content="Trang admin của website Blog"
+                />
+            </Helmet>
             <div className="flex">
                 {/* SideBar  */}
                 <aside

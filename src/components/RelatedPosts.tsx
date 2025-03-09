@@ -25,7 +25,7 @@ const RelatedPosts = ({ relatedPosts }: Props) => {
                         <div className="h-[220px] md:h-[300px] lg:h-[370px] rounded-xl overflow-hidden border">
                             <img
                                 src={post.backgroundImage}
-                                alt=""
+                                alt="Background Main"
                                 className="h-full w-full object-cover"
                             />
                         </div>

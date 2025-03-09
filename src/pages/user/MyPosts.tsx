@@ -1,4 +1,3 @@
-import UserLayout from '../../layouts/UserLayout';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import BlogCard from '../../components/BlogCard';
 import { useBlog } from '../../context/BlogContext';
@@ -8,7 +7,7 @@ const MyPosts = () => {
     console.log('Check Data: ', filteredMyPost);
 
     return (
-        <UserLayout>
+        <div>
             {loading ? (
                 <LoadingSpinner />
             ) : (
@@ -25,7 +24,7 @@ const MyPosts = () => {
                     </div>
                 </section>
             )}
-        </UserLayout>
+        </div>
     );
 };
 

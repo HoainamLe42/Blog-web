@@ -27,7 +27,7 @@ const BlogSlider = () => {
                 >
                     <img
                         src={post.backgroundImage}
-                        alt=""
+                        alt="Background Main"
                         className="w-full h-full object-cover"
                     />
                     <div className="absolute bottom-0 left-0 p-3 sm:p-5 md:p-10">
@@ -62,23 +62,6 @@ const BlogSlider = () => {
                 </Link>
             ))}
         </div>
-
-        //   Loading soon...
-        //             <div className="relative post-skeleton border border-secondary-border rounded-lg overflow-hidden animate-pulse">
-        //       <div className="w-full h-[450px] bg-gray-200 text-secondary-text text-3xl flex items-center justify-center">
-        //         No Image
-        //       </div>
-        //       <div className="absolute bottom-0 left-0 flex flex-col p-10 w-full">
-        //         <div className="rounded-full h-6 w-32 bg-gray-200 border border-secondary-border"></div>
-        //         <div className="rounded-full mt-4 h-10 w-[50%] bg-gray-200 border border-secondary-border"></div>
-        //         <div className="rounded-full mt-4 h-10 w-[60%] bg-gray-200 border border-secondary-border"></div>
-        //         <div className="flex items-center gap-3 mt-5">
-        //           <div className="h-9 w-9 rounded-full bg-gray-200 border border-secondary-border flex-shrink-0"></div>
-        //           <div className="rounded-full h-5 w-[15%] bg-gray-200 border border-secondary-border pb-1"></div>
-        //           <div className="rounded-full h-5 w-[15%] bg-gray-200 border border-secondary-border pb-1"></div>
-        //         </div>
-        //       </div>
-        //     </div>
     );
 };
 

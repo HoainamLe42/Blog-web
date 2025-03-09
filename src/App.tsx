@@ -8,39 +8,45 @@ import { AuthProvider } from './context/AuthContext';
 import { BlogProvider } from './context/BlogContext';
 import { ToastContainer } from 'react-toastify/unstyled';
 import 'react-toastify/dist/ReactToastify.css';
+import { HelmetProvider } from 'react-helmet-async';
 
 const App = () => {
     return (
-        <AuthProvider>
-            <BlogProvider>
-                <ThemeProvider>
-                    <Router>
-                        <ToastContainer position="top-right" autoClose={3000} />
-                        <ScrollToTop />
-                        <Routes>
-                            {publicRoutes.map((route, index) => {
-                                const Page = route.component;
-                                let Layout =
-                                    route.layout === null
-                                        ? Fragment
-                                        : route.layout || DefaultLayout;
-                                return (
-                                    <Route
-                                        key={index}
-                                        path={route.path}
-                                        element={
-                                            <Layout>
-                                                <Page />
-                                            </Layout>
-                                        }
-                                    />
-                                );
-                            })}
-                        </Routes>
-                    </Router>
-                </ThemeProvider>
-            </BlogProvider>
-        </AuthProvider>
+        <HelmetProvider>
+            <AuthProvider>
+                <BlogProvider>
+                    <ThemeProvider>
+                        <Router>
+                            <ToastContainer
+                                position="top-right"
+                                autoClose={3000}
+                            />
+                            <ScrollToTop />
+                            <Routes>
+                                {publicRoutes.map((route, index) => {
+                                    const Page = route.component;
+                                    let Layout =
+                                        route.layout === null
+                                            ? Fragment
+                                            : route.layout || DefaultLayout;
+                                    return (
+                                        <Route
+                                            key={index}
+                                            path={route.path}
+                                            element={
+                                                <Layout>
+                                                    <Page />
+                                                </Layout>
+                                            }
+                                        />
+                                    );
+                                })}
+                            </Routes>
+                        </Router>
+                    </ThemeProvider>
+                </BlogProvider>
+            </AuthProvider>
+        </HelmetProvider>
     );
 };
 

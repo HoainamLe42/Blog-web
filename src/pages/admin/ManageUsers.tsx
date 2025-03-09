@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import AdminLayout from '../../layouts/AdminLayout';
 import { API_BASE_URL } from '../../context/BlogContext';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { User } from '../../types/AuthTypes';
@@ -25,7 +24,7 @@ const ManageUsers = () => {
         }
     };
     return (
-        <AdminLayout>
+        <section>
             <h2 className="text-2xl font-bold mb-5 text-center">
                 Quản lý Người Dùng
             </h2>
@@ -91,7 +90,7 @@ const ManageUsers = () => {
                     </tbody>
                 </table>
             )}
-        </AdminLayout>
+        </section>
     );
 };
 

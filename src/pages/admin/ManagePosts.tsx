@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import AdminLayout from '../../layouts/AdminLayout';
 import { BlogPost } from '../../types/BlogTypes';
 import { API_BASE_URL } from '../../context/BlogContext';
 import LoadingSpinner from '../../components/LoadingSpinner';
@@ -83,73 +82,66 @@ const ManagePosts = () => {
     };
 
     return (
-        <AdminLayout>
-            <section>
-                <h2 className="text-h2 text-center mb-5">Duyệt bài viết</h2>
-                {loading ? (
-                    <LoadingSpinner />
-                ) : (
-                    <div>
-                        {posts.length === 0 ? (
-                            <p>Không có bài viết nào chờ duyệt</p>
-                        ) : (
-                            <ul>
-                                {posts.map((post) => (
-                                    <li
-                                        key={post.id}
-                                        className="border p-3 mb-3"
-                                    >
-                                        <h3 className="font-bold">
-                                            {post.title}
-                                        </h3>
-                                        {/* <p>{post?.content[0]}</p> */}
-                                        <p className="text-sm text-gray-500">
-                                            Tác giả: {post.author}
-                                        </p>
-                                        <div className="flex items-center justify-between mt-3">
+        <section>
+            <h2 className="text-h2 text-center mb-5">Duyệt bài viết</h2>
+            {loading ? (
+                <LoadingSpinner />
+            ) : (
+                <div>
+                    {posts.length === 0 ? (
+                        <p>Không có bài viết nào chờ duyệt</p>
+                    ) : (
+                        <ul>
+                            {posts.map((post) => (
+                                <li key={post.id} className="border p-3 mb-3">
+                                    <h3 className="font-bold">{post.title}</h3>
+                                    {/* <p>{post?.content[0]}</p> */}
+                                    <p className="text-sm text-gray-500">
+                                        Tác giả: {post.author}
+                                    </p>
+                                    <div className="flex items-center justify-between mt-3">
+                                        <Button
+                                            onClick={() =>
+                                                navigate(
+                                                    `/admin/post-detail/${post.id}`,
+                                                )
+                                            }
+                                            className="bg-sky-600 hover:bg-sky-600 hover:scale-105 transition-all duration-150 text-white px-5 py-1 rounded"
+                                        >
+                                            Xem
+                                        </Button>
+                                        <div className="flex gap-3">
                                             <Button
                                                 onClick={() =>
-                                                    navigate(
-                                                        `/admin/post-detail/${post.id}`,
+                                                    updatePostStatus(
+                                                        Number(post.id),
+                                                        'approved',
                                                     )
                                                 }
-                                                className="bg-sky-600 hover:bg-sky-600 hover:scale-105 transition-all duration-150 text-white px-5 py-1 rounded"
+                                                className="bg-green hover:bg-green hover:scale-105 transition-all duration-150 text-white px-3 py-1 rounded"
                                             >
-                                                Xem
+                                                Duyệt
                                             </Button>
-                                            <div className="flex gap-3">
-                                                <Button
-                                                    onClick={() =>
-                                                        updatePostStatus(
-                                                            Number(post.id),
-                                                            'approved',
-                                                        )
-                                                    }
-                                                    className="bg-green hover:bg-green hover:scale-105 transition-all duration-150 text-white px-3 py-1 rounded"
-                                                >
-                                                    Duyệt
-                                                </Button>
-                                                <Button
-                                                    onClick={() =>
-                                                        updatePostStatus(
-                                                            Number(post.id),
-                                                            'rejected',
-                                                        )
-                                                    }
-                                                    className="hover:scale-105 transition-all duration-150 text-white px-3 py-1 rounded"
-                                                >
-                                                    Từ chối
-                                                </Button>
-                                            </div>
+                                            <Button
+                                                onClick={() =>
+                                                    updatePostStatus(
+                                                        Number(post.id),
+                                                        'rejected',
+                                                    )
+                                                }
+                                                className="hover:scale-105 transition-all duration-150 text-white px-3 py-1 rounded"
+                                            >
+                                                Từ chối
+                                            </Button>
                                         </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                )}
-            </section>
-        </AdminLayout>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            )}
+        </section>
     );
 };
 
