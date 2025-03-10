@@ -23,11 +23,13 @@ const SignIn = () => {
     const [message, setMessage] = useState<string>('');
     const [errors, setErrors] = useState<Partial<SignInRequest>>({});
 
+    // Get value input
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    // Validate;
     const validate = (): boolean => {
         const newErrors: Partial<SignInRequest> = {};
 
@@ -47,6 +49,7 @@ const SignIn = () => {
         return Object.keys(newErrors).length === 0;
     };
 
+    // Submit form
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -89,14 +92,15 @@ const SignIn = () => {
     };
 
     return (
-        <div className="relative h-screen py-[140px] bg-gray-300 dark:bg-black">
+        <div className="relative md:h-screen pt-[100px] pb-[60px] md:py-[140px] bg-gray-100 dark:bg-black">
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 transition-all duration-300">
                     {/* Bg */}
-                    <div className="hidden md:flex items-center justify-center">
-                        <h3 className="text-h3 ">Soon</h3>
+                    <div className="relative hidden md:flex items-center justify-center">
+                        <h3 className="text-h3">Soon</h3>
                     </div>
-                    {/* Content */}
+
+                    {/* Sign In */}
                     <section className="flex flex-1 flex-col items-center justify-center max-w-[430px] w-full p-7 mx-auto rounded-xl bg-white drop-shadow-lg">
                         <h1 className="text-h4 mb-7">Đăng nhập</h1>
                         <form
@@ -108,7 +112,7 @@ const SignIn = () => {
                                 <div className="md:h-[50px] h-[48px] w-full flex items-center justify-center gap-2 rounded-full border cursor-pointer hover:border-primary">
                                     <img
                                         src={facebookIcons}
-                                        alt=""
+                                        alt="Facebook Icon"
                                         className="h-6 object-cover"
                                     />
                                     <span>Đăng nhập với Facebook</span>
@@ -116,7 +120,7 @@ const SignIn = () => {
                                 <div className="md:h-[50px] h-[48px] w-full flex items-center justify-center gap-2 rounded-full border cursor-pointer hover:border-primary">
                                     <img
                                         src={googleIcons}
-                                        alt=""
+                                        alt="Google Icon"
                                         className="h-6 object-cover"
                                     />
                                     <span>Đăng nhập với Facebook</span>
@@ -125,7 +129,7 @@ const SignIn = () => {
                                 <div className="md:h-[50px] h-[48px] w-full flex items-center justify-center gap-2 rounded-full border cursor-pointer hover:border-primary">
                                     <img
                                         src={appleIcons}
-                                        alt=""
+                                        alt="Apple Icon"
                                         className="h-6 object-cover"
                                     />
                                     <span>Đăng nhập với Facebook</span>

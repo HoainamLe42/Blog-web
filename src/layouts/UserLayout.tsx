@@ -81,7 +81,6 @@ const UserLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
                         </ul>
                     </nav>
                 </aside>
-
                 {/* Mobile */}
                 <aside className="relative flex sm:hidden justify-center px-2 py-4 bg-gray-100">
                     <div
