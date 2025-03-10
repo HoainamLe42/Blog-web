@@ -32,6 +32,7 @@ const CreateBlogPost = () => {
     const [tagInput, setTagInput] = useState('');
     const [errors, setErrors] = useState<Partial<BlogPost>>({});
     const [message, setMessage] = useState<string>('');
+    console.log(message);
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -133,7 +134,6 @@ const CreateBlogPost = () => {
                 console.error(error);
             } finally {
                 setIsSubmitting(false);
-                toast.success(message);
             }
         }
     };

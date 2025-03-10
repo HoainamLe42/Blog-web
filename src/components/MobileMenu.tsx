@@ -42,7 +42,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             {isOpen && (
                 <nav className="relative z-[999] p-4 h-full bg-white shadow-lg">
                     {/* Logo */}
-                    <div className="font-bold flex items-center justify-center gap-2 text-black dark:text-white">
+                    <div className="font-bold flex items-center justify-center gap-2 text-black">
                         <Link to={config.routes.HOME.PATH}>
                             <img src={Logo} alt="" className="h-9 rounded-lg" />
                         </Link>
@@ -58,7 +58,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                     className={({ isActive }) =>
                                         isActive
                                             ? 'relative text-yellow-300 py-2 after:h-[2px] after:w-full after:bg-yellow-300 after:absolute after:left-0 after:bottom-0'
-                                            : 'relative py-2 hover:text-yellow-300 dark:hover:text-primary transition-all duration-200 cursor-pointer hover-line'
+                                            : 'relative py-2 hover:text-yellow-300 transition-all duration-200 cursor-pointer hover-line'
                                     }
                                 >
                                     {nav.name}

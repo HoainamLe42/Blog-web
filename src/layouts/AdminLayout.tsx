@@ -5,6 +5,8 @@ import { sidebarAdminData } from '../data/sidebarAdminData';
 import { useAuth } from '../context/AuthContext';
 import { Helmet } from 'react-helmet-async';
 
+import Logo from '../assets/images/logo.webp';
+
 const AdminLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(true);
     const { logout } = useAuth();
@@ -22,15 +24,34 @@ const AdminLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
             <div className="flex">
                 {/* SideBar  */}
                 <aside
-                    className={`${
-                        isOpenSidebar ? 'w-[20%]' : 'w-[5%]'
-                    } border border-r-gray-200 shadow-lg bg-gray-100 h-screen transition-all duration-200`}
+                    // className={`sticky top-0 left-0 bottom-0${
+                    //     isOpenSidebar ? 'w-[20%]' : 'w-[5%]'
+                    // }border border-r-gray-200 shadow-lg bg-gray-100 h-screen transition-all duration-500`}
+                    className={`sticky top-0 left-0 bottom-0${
+                        isOpenSidebar
+                            ? 'w-[20%] min-w-[280px] '
+                            : 'w-[5%] min-w-[72px]'
+                    } border border-r-gray-200 shadow-lg bg-gray-100 h-screen transition-all duration-200 hidden sm:block`}
                 >
-                    <div
-                        onClick={() => setIsOpenSidebar(!isOpenSidebar)}
-                        className="p-2 bg-white relative top-0 left-0 inline-block cursor-pointer rounded ml-4 mt-2 shadow-md"
-                    >
-                        <Menu size="25" />
+                    <div className="flex items-center gap-8 ml-4 mt-2">
+                        <div
+                            onClick={() => setIsOpenSidebar(!isOpenSidebar)}
+                            className="p-2 bg-white relative top-0 left-0 inline-block cursor-pointer rounded shadow-md"
+                        >
+                            <Menu size="25" />
+                        </div>
+                        {isOpenSidebar && (
+                            <div className="flex items-center gap-2">
+                                <img
+                                    src={Logo}
+                                    alt=""
+                                    className="h-7 rounded-lg"
+                                />
+                                <span className="font-thin italic">
+                                    TravelBlog
+                                </span>
+                            </div>
+                        )}
                     </div>
 
                     <hr className="mx-2 my-2" />
@@ -67,7 +88,7 @@ const AdminLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
 
                 <div className="flex flex-grow flex-col">
                     {/* Header */}
-                    <header className="right-0 flex items-center justify-between gap-3 w-full py-3 px-4 shadow-lg">
+                    <header className="sticky z-[999] top-0 right-0 bg-white flex items-center justify-between gap-3 w-full py-3 px-4 shadow-lg">
                         <h1 className="text-xl text-primary font-bold">
                             Admin Panel
                         </h1>
@@ -99,9 +120,7 @@ const AdminLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
                     </header>
                     {/* Main content */}
 
-                    <main className="overflow-y-auto w-full py-3 px-4">
-                        {children}
-                    </main>
+                    <main className="w-full py-3 px-4 mt-7">{children}</main>
                 </div>
             </div>
         </div>
