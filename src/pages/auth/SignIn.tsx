@@ -11,9 +11,9 @@ import Container from '../../components/Container';
 import { useState } from 'react';
 import { SignInRequest, User, UserRole } from '../../types/AuthTypes';
 import { useAuth } from '../../context/AuthContext';
+import { API_BASE_URL } from '../../context/BlogContext';
 
 const SignIn = () => {
-    const API_BASE_URL = 'http://localhost:5004';
     const navigate = useNavigate();
     const [formData, setFormData] = useState<SignInRequest>({
         email: '',
@@ -69,11 +69,11 @@ const SignIn = () => {
 
                 if (user) {
                     setMessage('Đăng nhập thành công.');
+                    login(user);
 
                     if (user.role === UserRole.Admin) {
                         navigate(config.routes.ADMIN.DASHBOARD);
                     } else {
-                        login(user);
                         navigate(config.routes.HOME.PATH);
                         alert(`Hello ${user.username}`);
                     }

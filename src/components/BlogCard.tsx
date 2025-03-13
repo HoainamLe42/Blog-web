@@ -31,10 +31,10 @@ const BlogCard = ({
                 if (!response.ok) {
                     throw new Error(`HTTP lỗi! status: ${response.status}`);
                 }
-                const editPost = await response.json();
+                const data = await response.json();
 
-                if (editPost.length > 0) {
-                    setUserAvatar(editPost[0]?.avatar || '');
+                if (data.length > 0) {
+                    setUserAvatar(data[0]?.avatar || '');
                 } else {
                     console.warn('Không tìm thấy bài viết');
                 }

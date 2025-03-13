@@ -3,6 +3,7 @@ import config from '../config';
 import Setting from '../pages/user/Setting';
 import UserLayout from '../layouts/UserLayout';
 import AdminLayout from '../layouts/AdminLayout';
+import BlogList from '../pages/admin/BlogList';
 
 const HomePage = React.lazy(() => import('../pages/Home'));
 const ContactPage = React.lazy(() => import('../pages/Contact'));
@@ -99,6 +100,11 @@ export const publicRoutes: Route[] = [
     {
         path: config.routes.ADMIN.ADMIN_POST_DETAIL,
         component: AdminPostDetail,
+        layout: AdminLayout,
+    },
+    {
+        path: config.routes.ADMIN.BLOG_LIST,
+        component: BlogList,
         layout: AdminLayout,
     },
 ];
