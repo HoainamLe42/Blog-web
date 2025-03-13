@@ -33,9 +33,7 @@ const SinglePost = () => {
         return () => AOS.refresh();
     }, []);
 
-    const blogPost = blogPosts.find(
-        (blogPost) => Number(blogPost.id) === Number(postId),
-    );
+    const blogPost = blogPosts.find((blogPost) => blogPost.id === postId);
 
     const toggleComments = () => {
         setIsCommentsVisible(!isCommentsVisible);
@@ -62,8 +60,9 @@ const SinglePost = () => {
             ),
     );
 
+    // Fetch avatar user
     useEffect(() => {
-        const fetchPost = async () => {
+        const fetchUser = async () => {
             try {
                 const response = await fetch(
                     `${API_BASE_URL}/users?id=${blogPost?.userId}`,
@@ -78,10 +77,10 @@ const SinglePost = () => {
                 console.error('Lỗi khi fetch data', error);
             }
         };
-        fetchPost();
+        fetchUser();
     }, [blogPost?.userId]);
 
-    // Lọc avatar của chủ bài viết
+    // Filter avatar of main post
     const avatarSrc = authorPost?.avatar ? authorPost.avatar : defaultAvatar;
 
     return (
@@ -151,7 +150,7 @@ const SinglePost = () => {
                                         </div>
 
                                         <div className="flex items-center">
-                                            <ul className="flex gap-2 sm:ml-4">
+                                            <ul className="flex flex-wrap gap-2 sm:ml-4">
                                                 {blogPost?.tags.map(
                                                     (tag, index) => (
                                                         <li

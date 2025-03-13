@@ -30,6 +30,7 @@ const routes = {
         MANAGE_POSTS: '/admin/manage-post',
         MANAGE_USERS: '/admin/manage-users',
         ADMIN_POST_DETAIL: 'admin/post-detail/:postId',
+        BLOG_LIST: '/admin/users/:userId',
     },
 };
 
