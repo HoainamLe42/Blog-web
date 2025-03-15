@@ -124,7 +124,7 @@ const Comments = ({ isShowComments, postId, authorId }: CommentsProps) => {
 
     return (
         <section
-            className={`fixed top-0 z-[1000] right-0 h-full w-[30%] bg-white shadow-lg transition-transform duration-400 ${
+            className={`fixed top-0 z-[1000] right-0 h-full w-[75%] md:w-[30%] bg-white shadow-lg transition-transform duration-400 ${
                 isShowComments ? 'translate-x-0' : 'translate-x-full'
             }`}
         >
