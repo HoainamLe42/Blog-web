@@ -5,19 +5,21 @@ import {
     MessageCircleMore,
     Twitter,
 } from 'lucide-react';
-import Container from '../components/Container';
-import RelatedPosts from '../components/RelatedPosts';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { API_BASE_URL, useBlog } from '../context/BlogContext';
-import { calculateReadingTime, formatDate } from '../utils/CurrencyFormatter';
-import { defaultAvatar, useAuth } from '../context/AuthContext';
-import Button from '../components/Button';
-import Comments from '../components/Comments';
-import { User } from '../types/AuthTypes';
-import LoadingSpinner from '../components/LoadingSpinner';
 import AOS from 'aos';
 import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+// ============ <> =============
+import Button from '../components/Button';
+import { User } from '../types/AuthTypes';
+import Comments from '../components/Comments';
+import Container from '../components/Container';
+import RelatedPosts from '../components/RelatedPosts';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { API_BASE_URL, useBlog } from '../context/BlogContext';
+import { defaultAvatar, useAuth } from '../context/AuthContext';
+import { calculateReadingTime, formatDate } from '../utils/CurrencyFormatter';
 
 const SinglePost = () => {
     const [isCommentsVisible, setIsCommentsVisible] = useState(false);

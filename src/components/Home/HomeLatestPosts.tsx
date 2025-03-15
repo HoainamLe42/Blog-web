@@ -25,7 +25,7 @@ const HomeLatestPosts = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {approvedPosts.slice(0, 6).map((post) => (
-                            <BlogCard key={post.id} {...post} />
+                            <BlogCard key={post.id} post={post} />
                         ))}
                     </div>
                     <div className="text-center mt-10">

@@ -1,5 +1,5 @@
-export const API_BASE_URL = 'http://localhost:5004';
-// export const API_BASE_URL = 'https://2g4qz3-8088.csb.app';
+// export const API_BASE_URL = 'http://localhost:5004';
+export const API_BASE_URL = 'https://2g4qz3-8088.csb.app';
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { BlogPost } from '../types/BlogTypes';

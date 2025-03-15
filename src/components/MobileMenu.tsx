@@ -19,12 +19,10 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     const location = useLocation();
     const [isMenuUser, setIsMenuUser] = useState<boolean>(false);
 
-    // Đóng menu khi route thay đổi
+    // Close menu when route changes
     useEffect(() => {
         onClose(false);
     }, [location]);
-
-    console.log('Check data: ', user);
 
     return (
         <div

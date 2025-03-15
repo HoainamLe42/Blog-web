@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
-import BlogCard from '../components/BlogCard';
-import BlogSlider from '../components/BlogSlider';
-import Button from '../components/Button';
-import Container from '../components/Container';
-import { API_BASE_URL } from '../context/BlogContext';
-import { BlogPost } from '../types/BlogTypes';
-import LoadingSpinner from '../components/LoadingSpinner';
 import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
+
+// ============ <> =============
+import Button from '../components/Button';
+import { BlogPost } from '../types/BlogTypes';
+import BlogCard from '../components/BlogCard';
+import Container from '../components/Container';
+import BlogSlider from '../components/BlogSlider';
+import { API_BASE_URL } from '../context/BlogContext';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 // Giá trị không thay đổi nên đặt bên ngoài
 const LIMIT = 6;
@@ -76,7 +78,10 @@ const Blogs = () => {
                                     {/* Pagination (Phân trang) */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 md:mt-8">
                                         {posts.map((post) => (
-                                            <BlogCard key={post.id} {...post} />
+                                            <BlogCard
+                                                key={post.id}
+                                                post={post}
+                                            />
                                         ))}
                                     </div>
                                 </section>
@@ -87,12 +92,14 @@ const Blogs = () => {
                                         <Button
                                             onClick={handleLoadMore}
                                             variant="borderOnly"
-                                            className="px-6"
+                                            className="px-6 relative group hover:text-white"
                                             disabled={loading}
                                         >
                                             {loading
                                                 ? '...đang tải'
                                                 : 'Xem thêm'}
+
+                                            <span className="absolute z-[-1] inset-0 bg-primary w-[0%] group-hover:w-[100%] transition-all duration-300"></span>
                                         </Button>
                                     </div>
                                 )}

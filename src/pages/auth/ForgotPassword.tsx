@@ -1,7 +1,9 @@
-import { ChevronLeft, CircleAlert, Mail } from 'lucide-react';
-import Button from '../../components/Button';
-import config from '../../config';
 import { useState } from 'react';
+import { ChevronLeft, CircleAlert, Mail } from 'lucide-react';
+
+// ============ <> =============
+import config from '../../config';
+import Button from '../../components/Button';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState<string>('');

@@ -1,16 +1,18 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Facebook, Linkedin, Twitter } from 'lucide-react';
+
+// ============ <> =============
+import { User } from '../../types/AuthTypes';
+import { BlogPost } from '../../types/BlogTypes';
+import Container from '../../components/Container';
+import { API_BASE_URL } from '../../context/BlogContext';
+import { defaultAvatar } from '../../context/AuthContext';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import {
     calculateReadingTime,
     formatDate,
 } from '../../utils/CurrencyFormatter';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { BlogPost } from '../../types/BlogTypes';
-import { API_BASE_URL } from '../../context/BlogContext';
-import Container from '../../components/Container';
-import LoadingSpinner from '../../components/LoadingSpinner';
-import { defaultAvatar } from '../../context/AuthContext';
-import { User } from '../../types/AuthTypes';
 
 const AdminPostDetail = () => {
     const { postId } = useParams<{ postId: string }>();

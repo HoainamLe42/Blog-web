@@ -1,18 +1,17 @@
 import { useState } from 'react';
-import Button from '../../components/Button';
-import Container from '../../components/Container';
-import { BlogPost } from '../../types/BlogTypes';
-import { X } from 'lucide-react';
+import { toast } from 'react-toastify/unstyled';
+import { Facebook, Linkedin, Twitter, X } from 'lucide-react';
 
-// ===
-import { Facebook, Linkedin, Twitter } from 'lucide-react';
+// ============ <> =============
+import Button from '../../components/Button';
+import { BlogPost } from '../../types/BlogTypes';
+import Container from '../../components/Container';
+import { API_BASE_URL } from '../../context/BlogContext';
+import { defaultAvatar, useAuth } from '../../context/AuthContext';
 import {
     calculateReadingTime,
     formatDate,
 } from '../../utils/CurrencyFormatter';
-import { API_BASE_URL } from '../../context/BlogContext';
-import { defaultAvatar, useAuth } from '../../context/AuthContext';
-import { toast } from 'react-toastify/unstyled';
 
 const CreateBlogPost = () => {
     const { user } = useAuth();

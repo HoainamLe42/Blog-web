@@ -1,15 +1,20 @@
 // Icons social
+import { useState } from 'react';
+
+// ============ <> =============
+import config from '../../config';
+import Button from '../../components/Button';
+import Container from '../../components/Container';
+import { SignUpRequest, User, UserRole } from '../../types/AuthTypes';
+import { API_BASE_URL } from '../../context/BlogContext';
+
+// Icons social
 import facebookIcons from '../../assets/images/social/fb.png';
 import googleIcons from '../../assets/images/social//gg.png';
 import appleIcons from '../../assets/images/social/apple.png';
-import Button from '../../components/Button';
-import config from '../../config';
-import { useState } from 'react';
-import { SignUpRequest, User, UserRole } from '../../types/AuthTypes';
-import Container from '../../components/Container';
+import { Eye, EyeOff } from 'lucide-react';
 
 const SignUp = () => {
-    const API_BASE_URL = 'http://localhost:5004';
     const [formData, setFormData] = useState<SignUpRequest>({
         email: '',
         password: '',
@@ -17,6 +22,7 @@ const SignUp = () => {
         username: '',
     });
     const [message, setMessage] = useState<string>('');
+    const [isPassword, setIsPassword] = useState<boolean>(false);
     const [errors, setErrors] = useState<Partial<SignUpRequest>>({});
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +77,7 @@ const SignUp = () => {
                 const newUser: SignUpRequest = {
                     id: generateId(),
                     username: formData.username,
-                    email: formData.email,
+                    email: formData.email.toLowerCase(),
                     password: formData.password,
                     avatar: null,
                     status: 'active',
@@ -152,7 +158,7 @@ const SignUp = () => {
                             placeholder="Username"
                             className="md:h-[50px] h-[48px] px-5 border rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
                         />
-                        {errors.confirmPassword && (
+                        {errors.username && (
                             <p className="text-red-500 text-sm mt-2 ml-2">
                                 {errors.username}
                             </p>
@@ -165,32 +171,63 @@ const SignUp = () => {
                             placeholder="Email"
                             className="md:h-[50px] h-[48px] px-5 mt-3 border rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
                         />
-                        {errors.confirmPassword && (
+                        {errors.email && (
                             <p className="text-red-500 text-sm mt-2 ml-2">
                                 {errors.email}
                             </p>
                         )}
-                        <input
-                            type="text"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            placeholder="Password"
-                            className="md:h-[50px] h-[48px] px-5 mt-3 border rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
-                        />
-                        {errors.confirmPassword && (
+                        <div className="relative mt-3">
+                            <input
+                                name="password"
+                                type={isPassword ? 'text' : 'password'}
+                                value={formData.password}
+                                onChange={handleChange}
+                                placeholder="Password"
+                                className="md:h-[50px] h-[48px] w-full px-5 border rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
+                            />
+
+                            {formData.password && (
+                                <span
+                                    onClick={() => setIsPassword(!isPassword)}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 p-2"
+                                >
+                                    {isPassword ? (
+                                        <EyeOff color="gray" size="18" />
+                                    ) : (
+                                        <Eye color="gray" size="18" />
+                                    )}
+                                </span>
+                            )}
+                        </div>
+                        {errors.password && (
                             <p className="text-red-500 text-sm mt-2 ml-2">
                                 {errors.password}
                             </p>
                         )}
-                        <input
-                            type="text"
-                            name="confirmPassword"
-                            value={formData.confirmPassword}
-                            onChange={handleChange}
-                            placeholder="Confirm Password"
-                            className="md:h-[50px] h-[48px] px-5 mt-3 border rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
-                        />
+
+                        {/* ConfirmPassword */}
+                        <div className="relative mt-3">
+                            <input
+                                name="confirmPassword"
+                                type={isPassword ? 'text' : 'password'}
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                                placeholder="Confirm Password"
+                                className="md:h-[50px] h-[48px] w-full px-5 border rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
+                            />
+                            {formData.confirmPassword && (
+                                <span
+                                    onClick={() => setIsPassword(!isPassword)}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 p-2"
+                                >
+                                    {isPassword ? (
+                                        <EyeOff color="gray" size="18" />
+                                    ) : (
+                                        <Eye color="gray" size="18" />
+                                    )}
+                                </span>
+                            )}
+                        </div>
                         {errors.confirmPassword && (
                             <p className="text-red-500 text-sm mt-2 ml-2">
                                 {errors.confirmPassword}
@@ -202,14 +239,16 @@ const SignUp = () => {
                                 {message}
                             </p>
                         )}
-                        <Button className="my-5 rounded-full">Đăng ký</Button>
-                        <p className="text-secondary-text text-center">
+                        <Button className="my-5 rounded-full select-none">
+                            Đăng ký
+                        </Button>
+                        <p className="text-secondary-text text-center select-none">
                             Nếu đã có tài khoản?{' '}
                             <Button
                                 type="submit"
                                 to={config.routes.AUTH.SIGN_IN}
                                 variant="outline"
-                                className="text-black px-1 hover:text-primary hover:underline cursor-pointer"
+                                className="text-black px-1 hover:text-primary hover:underline cursor-pointer select-none"
                             >
                                 Đăng nhập
                             </Button>
