@@ -1,3 +1,4 @@
+// ============ <> =============
 import LoadingSpinner from '../../components/LoadingSpinner';
 import BlogCard from '../../components/BlogCard';
 import { useBlog } from '../../context/BlogContext';
@@ -19,7 +20,7 @@ const MyPosts = () => {
                     {/* List Post */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                         {filteredMyPost.map((post) => (
-                            <BlogCard key={post.id} {...post} />
+                            <BlogCard key={post.id} post={post} />
                         ))}
                     </div>
                 </section>

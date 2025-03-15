@@ -20,7 +20,7 @@ const BlogSlider = () => {
             {blogPosts.map((post, index) => (
                 <Link
                     key={post.id}
-                    to={`/single-blog-post/${index}`}
+                    to={`/single-blog-post/${post.id}`}
                     className={`absolute w-full h-full transition-opacity duration-700 ${
                         index === currentIndex ? 'opacity-100' : 'opacity-0'
                     }`}

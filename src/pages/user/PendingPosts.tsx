@@ -1,3 +1,4 @@
+// ============ <> =============
 import { useAuth } from '../../context/AuthContext';
 import { useBlog } from '../../context/BlogContext';
 import BlogCard from '../../components/BlogCard';
@@ -18,7 +19,7 @@ const PendingPosts = () => {
                 {filteredPosts.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                         {filteredPosts.map((post) => (
-                            <BlogCard {...post} />
+                            <BlogCard key={post.id} post={post} />
                         ))}
                     </div>
                 ) : (

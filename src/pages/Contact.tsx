@@ -1,11 +1,13 @@
+import AOS from 'aos';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { toast } from 'react-toastify/unstyled';
+
+// ============ <> =============
 import Button from '../components/Button';
 import Container from '../components/Container';
 import { contactData } from '../data/contactData';
 import { API_BASE_URL } from '../context/BlogContext';
-import { toast } from 'react-toastify/unstyled';
-import AOS from 'aos';
-import { Helmet } from 'react-helmet-async';
 
 type ContactType = {
     name: string;
@@ -107,10 +109,10 @@ const Contact = () => {
                             {contactData.socialLink.map((social, index) => (
                                 <li
                                     key={index}
-                                    className="flex gap-3 cursor-pointer"
+                                    className="flex gap-3 cursor-pointer group"
                                 >
                                     <span className="p-2 h-10 w-10 flex justify-center items-center border border-gray-400 rounded-md hover:border-primary hover:bg-primary transition-all duration-150">
-                                        <social.icon className="w-4 dark:text-white" />
+                                        <social.icon className="w-4 dark:text-white group-hover:text-white" />
                                     </span>
                                 </li>
                             ))}
@@ -220,7 +222,7 @@ const Contact = () => {
 
                             <Button
                                 type="submit"
-                                className="max-w-[200px] mt-2"
+                                className="max-w-[200px]  mt-4 hover:scale-105 transition-all duration-150"
                             >
                                 Gửi
                             </Button>

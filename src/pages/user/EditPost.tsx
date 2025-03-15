@@ -1,18 +1,20 @@
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { API_BASE_URL } from '../../context/BlogContext';
+import { toast } from 'react-toastify/unstyled';
+
+// ============ <> =============
+import config from '../../config';
+import Button from '../../components/Button';
 import { BlogPost } from '../../types/BlogTypes';
 import Container from '../../components/Container';
+import { API_BASE_URL } from '../../context/BlogContext';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { Facebook, Linkedin, Twitter, X } from 'lucide-react';
-import Button from '../../components/Button';
-import { Link } from 'react-router-dom';
-import config from '../../config';
 import {
     calculateReadingTime,
     formatDate,
 } from '../../utils/CurrencyFormatter';
-import { toast } from 'react-toastify/unstyled';
 
 const EditPost = () => {
     const { id } = useParams();

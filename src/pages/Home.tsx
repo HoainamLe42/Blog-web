@@ -1,16 +1,18 @@
-import { useEffect } from 'react';
 import Aos from 'aos';
+import { useEffect } from 'react';
+import { ArrowDown } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
+// ============ <> =============
+import Button from '../components/Button';
 import Container from '../components/Container';
+import { useBlog } from '../context/BlogContext';
+import Features from '../components/Home/Features';
+import LoadingSpinner from '../components/LoadingSpinner';
+import HomeLatestPosts from '../components/Home/HomeLatestPosts';
+
 // Images
 import bgImg from '../assets/images/home/bg-home.jpg';
-import Features from '../components/Home/Features';
-import HomeLatestPosts from '../components/Home/HomeLatestPosts';
-import Button from '../components/Button';
-import { ArrowDown } from 'lucide-react';
-import { useBlog } from '../context/BlogContext';
-import LoadingSpinner from '../components/LoadingSpinner';
-import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     const { scrollToNextSection } = useBlog();

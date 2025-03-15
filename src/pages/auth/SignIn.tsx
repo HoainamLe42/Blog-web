@@ -1,17 +1,19 @@
-// Icons social
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Social Icons
 import facebookIcons from '../../assets/images/social/fb.png';
 import googleIcons from '../../assets/images/social//gg.png';
 import appleIcons from '../../assets/images/social/apple.png';
-import Button from '../../components/Button';
+
+// ============ <> =============
 import config from '../../config';
+import Button from '../../components/Button';
 import Container from '../../components/Container';
-import { useState } from 'react';
-import { SignInRequest, User, UserRole } from '../../types/AuthTypes';
 import { useAuth } from '../../context/AuthContext';
+import { SignInRequest, User, UserRole } from '../../types/AuthTypes';
 import { API_BASE_URL } from '../../context/BlogContext';
+import { Eye, EyeOff } from 'lucide-react';
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -21,6 +23,7 @@ const SignIn = () => {
     });
     const { login } = useAuth();
     const [message, setMessage] = useState<string>('');
+    const [isPassword, setIsPassword] = useState<boolean>(false);
     const [errors, setErrors] = useState<Partial<SignInRequest>>({});
 
     // Get value input
@@ -63,7 +66,7 @@ const SignIn = () => {
 
                 const user: User | undefined = users.find(
                     (user) =>
-                        user.email === formData.email &&
+                        user.email === formData.email.toLowerCase() &&
                         user.password === formData.password,
                 );
 
@@ -73,6 +76,7 @@ const SignIn = () => {
 
                     if (user.role === UserRole.Admin) {
                         navigate(config.routes.ADMIN.DASHBOARD);
+                        alert('Hello Admin');
                     } else {
                         navigate(config.routes.HOME.PATH);
                         alert(`Hello ${user.username}`);
@@ -85,10 +89,6 @@ const SignIn = () => {
                 setMessage('Lỗi khi đăng nhập. Vui lòng thử lại.');
             }
         }
-
-        // Test
-        // const jsonString = JSON.stringify(formData, null, 2);
-        // alert(jsonString);
     };
 
     return (
@@ -152,14 +152,31 @@ const SignIn = () => {
                                     {errors.email}
                                 </p>
                             )}
-                            <input
-                                name="password"
-                                type="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                placeholder="Password"
-                                className="md:h-[50px] h-[48px] px-5 mt-3 border rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
-                            />
+                            <div className="relative mt-3 flex items-center justify-center">
+                                <input
+                                    name="password"
+                                    type={isPassword ? 'text' : 'password'}
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    placeholder="Password"
+                                    className="md:h-[50px] h-[48px] w-full px-5 border rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
+                                />
+
+                                {formData.password && (
+                                    <span
+                                        onClick={() =>
+                                            setIsPassword(!isPassword)
+                                        }
+                                        className="absolute right-3 top-1/2 -translate-y-1/2 p-2"
+                                    >
+                                        {isPassword ? (
+                                            <EyeOff color="gray" size="18" />
+                                        ) : (
+                                            <Eye color="gray" size="18" />
+                                        )}
+                                    </span>
+                                )}
+                            </div>
                             {errors.password && (
                                 <p className="text-red-500 text-sm ml-2 mt-1">
                                     {errors.password}
@@ -174,13 +191,13 @@ const SignIn = () => {
                                 onClick={() =>
                                     navigate(config.routes.AUTH.FORGOT_PASSWORD)
                                 }
-                                className="text-secondary-text mt-3 ml-auto cursor-pointer hover:text-primary"
+                                className="select-none text-secondary-text mt-3 ml-auto cursor-pointer hover:text-primary"
                             >
                                 Quên mật khẩu?
                             </p>
                             <Button
                                 type="submit"
-                                className="my-5 rounded-full md:h-[50px] h-[48px] flex items-center disabled:opacity-80"
+                                className="my-5 rounded-full md:h-[50px] h-[48px] flex items-center disabled:opacity-80 select-none"
                                 disabled={!formData.email || !formData.password}
                             >
                                 Đăng nhập

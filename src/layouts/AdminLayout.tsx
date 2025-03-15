@@ -195,8 +195,8 @@ const AdminLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
                             <div className="absolute top-[100%] pointer-events-none group-hover:pointer-events-auto right-0 p-3 opacity-0 group-hover:opacity-100 group-hover:block transition-all duration-200 translate-y-[-10px] group-hover:translate-y-0">
                                 <div
                                     onClick={() => {
-                                        logout;
-                                        navigate('/');
+                                        logout();
+                                        navigate(config.routes.HOME.PATH);
                                     }}
                                     className="bg-gray-100 dark:bg-black/80 shadow-md px-5 py-3 rounded-md cursor-pointer"
                                 >

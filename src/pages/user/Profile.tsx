@@ -1,12 +1,11 @@
+import { Edit } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify/unstyled';
 
-// ==============
-import { Edit } from 'lucide-react';
+// ============ <> =============
 import Button from '../../components/Button';
-import { defaultAvatar, useAuth } from '../../context/AuthContext';
-
 import { API_BASE_URL } from '../../context/BlogContext';
+import { defaultAvatar, useAuth } from '../../context/AuthContext';
 
 const Profile = () => {
     const { userId, setUser, user } = useAuth();

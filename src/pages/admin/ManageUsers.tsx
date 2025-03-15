@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify/unstyled';
+
+// ============ <> =============
+import { User } from '../../types/AuthTypes';
 import { API_BASE_URL } from '../../context/BlogContext';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import { User } from '../../types/AuthTypes';
 import ConfirmationModal from '../../components/ConfirmationModal';
-import { toast } from 'react-toastify/unstyled';
-import { Link } from 'react-router-dom';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState<User[]>([]);
@@ -213,6 +215,12 @@ const ManageUsers = () => {
                                     <p className="font-bold text-center">
                                         {user.username}
                                     </p>
+                                    <Link
+                                        to={`/admin/users/${user.id}`}
+                                        className="text-center text-secondary-text"
+                                    >
+                                        ID: <span>{user.id}</span>
+                                    </Link>
                                     <p>
                                         Email: <span>{user.email}</span>
                                     </p>
