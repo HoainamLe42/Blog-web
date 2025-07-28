@@ -1,50 +1,99 @@
-# React + TypeScript + Vite
+# 📘 Blog Web – Giao diện Chia sẻ Hành trình Du lịch, công nghệ và đam mê của mình.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Một dự án web blog cho phép người dùng chia sẻ, khám phá, sở thích và bình luận về các chuyến đi khám phá cảnh đẹp.
 
-Currently, two official plugins are available:
+## 📸 Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> [🌐 Xem demo tại đây](https://blog-website-three-blond.vercel.app) >
 
-## Expanding the ESLint configuration
+![Preview](../frontend//src/assets/blog-preview.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 📌 Mục tiêu dự án
 
-- Configure the top-level `parserOptions` property like this:
+Tạo ra một nền tảng blog đơn giản để người dùng:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+-   Đăng tải bài viết chia sẻ về hành trình du lịch, khám phá, công nghệ và sở thích.
+-   Xem, tìm kiếm và đọc các bài viết từ cộng đồng.
+-   Bình luận dưới bài viết để tương tác và đóng góp ý kiến.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🚀 Các tính năng chính
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 🧭 Giao diện & trải nghiệm
+
+-   Giao diện phản hồi tốt (Responsive) cho cả mobile & desktop.
+
+### 👤 Người dùng
+
+-   Đăng nhập / Đăng ký.
+-   Đăng bài viết blog mới (tiêu đề, ảnh, nội dung).
+-   Chỉnh sửa hoặc xoá bài viết cá nhân.
+-   Xem danh sách bài viết từ tất cả người dùng.
+-   Bình luận dưới bài viết của người khác.
+
+### Trang Admin
+
+Trang quản trị dành riêng cho người quản trị viên có tài khoản với quyền "admin".
+
+#### 🔹 Quản lý bài viết
+
+-   Xem danh sách toàn bộ bài viết của người dùng.
+-   Duyệt bài viết trước khi đưa lên web.
+-   Xem chi tiết thông tin bài viết: tiêu đề, mô tả, ảnh, tác giả,...
+
+#### 🔹 Quản lý người dùng
+
+-   Xem danh sách người dùng đã đăng ký.
+-   Kiểm tra thông tin người dùng (email, tên).
+-   Xoá, chặn người dùng vi phạm chính sách.
+
+#### 🔹 Giao diện quản lý đơn giản
+
+-   Giao diện trực quan, dễ sử dụng với React + Tailwind CSS.
+-   Chuyển đổi nhanh giữa các phần: quản lý bài viết, người dùng, trang chủ.
+
+---
+
+## 🛠️ Công nghệ sử dụng
+
+-   **Frontend:**
+    | Công nghệ | Mô tả |
+    | ------------------ | ------------------------- |
+    | React + TypeScript | Frontend |
+    | Tailwind CSS | Giao diện nhanh, hiện đại |
+    | React Router | Điều hướng giữa các trang |
+    | Context API | Quản lý state toàn cục |
+
+-   **Backend (giả lập):**
+-   JSON Server được deploy trên **Codesandbox** để giữ backend luôn online
+-   API luôn sẵn sàng truy cập qua URL như:  
+     `https://2g4qz3-8088.csb.app`
+
+-   Các endpoint API: `/users`, `/blogPosts`, `/contacts`
+
+## 🔐 Tài khoản đăng nhập (Demo)
+
+| Loại  | Email               | Mật khẩu |
+| ----- | ------------------- | -------- |
+| Admin | admin@gmail.com     | admin123 |
+| ----- | ---------------     | -------- |
+| User  | sontung93@gmail.com | 12345    |
+
+> Sử dụng tài khoản trên để đăng nhập và truy cập trang quản trị và user.
+
+## 📦 Cài đặt & chạy project
+
+```bash
+# Clone dự án
+git clone https://github.com/HoainamLe42/Blog-web.git
+
+# Cài dependencies
+npm install
+
+# Chạy frontend
+npm run dev
+
+# Chạy json server
+npm run server
 ```
